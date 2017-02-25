@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>短连接生成器</title>
+    <link rel="stylesheet" href="static/css/bootstrap.css"></link>
+    <script src="static/js/vendor/modernizr-2.8.3.min.js"></script>
+
+</head>
+<body>
+<script>window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="static/js/index.js"></script>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+
+            </button>
+            <a class="navbar-brand hidden-sm" href="/"
+               onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">短连接生成器</a>
+        </div>
+    </div>
+</div>
+
+
+<div style="padding: 100px 300px 10px">
+    <form role="form">
+        <div class="form-group">
+            <textarea class="form-control" rows="5" placeholder="请输入需要生成的URL" name="input_url"></textarea>
+        </div>
+    </form>
+
+    <button class="btn btn-large" onclick="changeintoshort()">生成</button>
+</div>
+
+<div style="padding: 10px 300px 10px">
+    <form role="form">
+        <div class="form-group">
+            <textarea class="form-control" rows="1" name="output_url"></textarea>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="static/css/bootstrap.css"></link>
+    <script src="static/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+    <style>
+        body {
+            margin-left: auto;
+            margin-right: auto;
+            margin-TOP: 100PX;
+            width: 20em;
+        }
+    </style>
+
+</head>
+<body>
+
+<script>window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="static/js/bootstrap.js"></script>
+<script src="static/js/admin.js"></script>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+
+            </button>
+            <a class="navbar-brand hidden-sm" href="/"
+               onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">短连接生成器</a>
+        </div>
+
+        <div>
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+
+            </button>
+            <a class="navbar-brand hidden-sm" onclick="logout()" herf="/">退出</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="input-group">
+    <span class="input-group-addon">@</span>
+    <input id="name" type="text" class="form-control" placeholder="用户名" aria-describedby="basic-addon1">
+</div>
+<br>
+
+<div class="input-group">
+    <span class="input-group-addon">@</span>
+    <input id="old_password" type="password" class="form-control" placeholder="旧密码" aria-describedby="basic-addon1">
+</div>
+<br>
+
+<div class="input-group">
+    <span class="input-group-addon">@</span>
+    <input id="password" type="password" class="form-control" placeholder="新密码" aria-describedby="basic-addon1">
+</div>
+<br>
+
+<div class="input-group">
+    <span class="input-group-addon">@</span>
+    <input id="confirm_password" type="password" class="form-control" placeholder="密码校验"
+           aria-describedby="basic-addon1">
+</div>
+<br>
+
+<br>
+<button type="button" style="width:280px;" class="btn btn-default" onclick="updateData()">更 新</button>
+
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <caption>黑名单</caption>
+        <thead>
+        <tr>
+            <th>链接</th>
+            <th>全选 <input name="AllChoices" type="checkbox" value="1" onclick="AllChange()"/></th>
+        </tr>
+        </thead>
+        <tbody id="black_list">
+
+        </tbody>
+    </table>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="add_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加黑名单</h4>
+                </div>
+                <div padding="5px 5px 20px 20px">
+                    <input id="black_url" type="text" class="form-control" placeholder="url"
+                           aria-describedby="basic-addon1">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" onclick="add_Url()">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button type="button" id="del_url" style="width:130px;" class="btn btn-default" onclick="del_Url()"
+                disabled="disabled">
+            删 除
+        </button>
+        <button type="button" style="width:130px;" class="btn btn-default" data-toggle="modal"
+                data-target="#add_Modal">
+            添 加
+        </button>
+    </div>
+</div>
+</body>
+</html>

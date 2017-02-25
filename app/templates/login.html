@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="static/css/bootstrap.css"></link>
+    <script src="static/js/vendor/modernizr-2.8.3.min.js"></script>
+    <style>
+        body {
+            margin-left: auto;
+            margin-right: auto;
+            margin-TOP: 100PX;
+            width: 20em;
+        }
+    </style>
+
+</head>
+<body>
+<script>window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="static/js/login.js"></script>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+
+            </button>
+            <a class="navbar-brand hidden-sm" href="/"
+               onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">短连接生成器</a>
+        </div>
+    </div>
+</div>
+
+<div class="input-group">
+    <span class="input-group-addon">@</span>
+    <input id="name" type="text" class="form-control" placeholder="用户名" aria-describedby="basic-addon1">
+</div>
+<br>
+<div class="input-group">
+    <span class="input-group-addon">@</span>
+    <input id="password" type="password" class="form-control" placeholder="密码" aria-describedby="basic-addon1">
+</div>
+<br>
+<button type="button" style="width:280px;" class="btn btn-default" onclick="login()">登 录</button>
+
+</body>
+</html>
