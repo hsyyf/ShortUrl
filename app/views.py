@@ -30,7 +30,7 @@ def install():
     if password != confirm_password:
         ErrResponse()
     User.create(name=name, password=password)
-    Constant.create(kind='constant', code='main_url', name='主链接', value=domain)
+    Constant.create(kind='constant', code='main_url', name=domain, value=domain)
     return SuccResponse()
 
 
@@ -38,7 +38,7 @@ def install():
 def index():
     user = User.query.filter_by().first()
     if not user:
-        render_template('install.html')
+        return render_template('install.html')
     return render_template('index.html')
 
 
@@ -68,7 +68,7 @@ def change():
     else:
         domain = main_url.name
     if in_black(long_url):
-        ErrResponse()
+        return ErrResponse()
     hash_key = change_into_short(long_url)
     short_url = domain + r'/s/' + hash_key
 
