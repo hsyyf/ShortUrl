@@ -44,10 +44,12 @@ def get_hash_key(long_url):
 
 
 def match_url(url):
-    if re.match(r'^https?:/{2}\w.+$', url):
+    if r'://' not in url:
+        return 'http://' + url
+    if url.split(r'://')[0] in ['http', 'https', 'ftp']:
         return url
     else:
-        return 'http://' + url
+        return False
 
 
 def change_into_short(url):
@@ -71,4 +73,4 @@ def in_black(url):
 
 
 if __name__ == '__main__':
-    print(in_black('www.baud.com:20324/23ed/23'))
+    print(match_url('ssh://www.baud.com:20324/23ed/23'))
