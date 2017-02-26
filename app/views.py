@@ -30,7 +30,7 @@ def install():
     if password != confirm_password:
         ErrResponse()
     User.create(name=name, password=password)
-    Constant.create(kind='constant', code='main_url', name='主链接', value=domain)
+    Constant.create(kind='constant', code='main_url', name=domain, value=domain)
     return SuccResponse()
 
 
@@ -38,7 +38,7 @@ def install():
 def index():
     user = User.query.filter_by().first()
     if not user:
-        render_template('install.html')
+        return render_template('install.html')
     return render_template('index.html')
 
 
@@ -62,15 +62,19 @@ def change():
         return ErrResponse()
     long_url = match_url(long_url)
 
+    if not long_url:
+        return ErrResponse()
+
+
     main_url = Constant.query.filter_by(code='main_url').first()
     if not main_url:
         domain = ''
     else:
         domain = main_url.name
     if in_black(long_url):
-        ErrResponse()
+        return ErrResponse()
     hash_key = change_into_short(long_url)
-    short_url = domain + r'/s/' + hash_key
+    short_url = domain + r'/' + hash_key
 
     url = ShortUrl.query.filter_by(short_url=short_url).first()
     if not url:
@@ -114,25 +118,6 @@ def login_status():
         return SuccResponse()
     else:
         return ErrResponse()
-
-
-@app.route('/s/<url>', methods=['GET'])
-def redirecting(url):
-    if not url:
-        return redirect('/')
-
-    main_url = Constant.query.filter_by(code='main_url').first()
-    if not main_url:
-        domain = 't.cn'
-    else:
-        domain = main_url.name
-    short_url = domain + '/s/' + url
-    url_total = ShortUrl.query.filter_by(short_url=short_url).first()
-
-    if not url_total:
-        return redirect('/')
-
-    return redirect(url_total.long_url)
 
 
 @app.route('/admin', methods=['GET'])
@@ -213,3 +198,22 @@ def del_url():
         else:
             domain.delete()
     return SuccResponse()
+
+
+@app.route('/<url>', methods=['GET'])
+def redirecting(url):
+    if not url:
+        return redirect('/')
+
+    main_url = Constant.query.filter_by(code='main_url').first()
+    if not main_url:
+        domain = ''
+    else:
+        domain = main_url.name
+    short_url = domain + '/' + url
+    url_total = ShortUrl.query.filter_by(short_url=short_url).first()
+
+    if not url_total:
+        return redirect('/')
+
+    return redirect(url_total.long_url)
