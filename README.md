@@ -45,3 +45,13 @@ gunicorn -w 4 -b 127.0.0.1:1122 ShortUrl:app >> log.log&
 - 在启动gunicorn之前，执行python3 create_db.py，生成数据库。
 - 启动gunicorn，访问，域名+'/install'进行安装。
 
+
+
+
+### 修复
+
+2017-2-26：
+
+- 修复读取主域名失败
+- 删除/s/
+- 添加协议[s]，ftp协议判断
