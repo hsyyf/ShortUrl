@@ -24,6 +24,12 @@ def create_app(config=appconfig.BaseConfig):
                                    'favicon.ico',
                                    mimetype='image/vnd.microsoft.icon')
 
+    @app.route('/robot.txt')
+    def robot():
+        return send_from_directory(os.path.join(app.root_path, 'static/'),
+                                   'robot.txt',
+                                   mimetype='text/plain')
+
     @app.errorhandler(404)
     def not_fund(error):
         return render_template('404.html')
