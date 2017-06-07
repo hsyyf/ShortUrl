@@ -7,7 +7,7 @@ from app.model import BlackList
 
 
 def get_md5(s):
-    s = s.encode('utf8')  # if isinstance(s, unicode) else s
+    s = s.encode('utf8')
     m = hashlib.md5()
     m.update(s)
     return m.hexdigest()

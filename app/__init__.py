@@ -7,7 +7,7 @@ from flask import send_from_directory
 
 from app import appconfig
 
-from app.extension import app, login_manager, bcrypt, session
+from app.extension import app, login_manager, bcrypt
 from app.model import User
 from app.util.mysql_util import db
 
@@ -35,7 +35,6 @@ def register_extension(app_conf):
     init_login_manager(app_conf)
     db.init_app(app_conf)
     bcrypt.init_app(app_conf)
-    session.init_app(app_conf)
 
 
 def init_login_manager(app_conf):

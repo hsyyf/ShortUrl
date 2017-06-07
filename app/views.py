@@ -1,7 +1,6 @@
 # encoding: utf-8
 
-from flask import redirect
-from flask import render_template, request
+from flask import redirect, render_template, request
 from flask_login import current_user, login_required, login_user, logout_user
 
 from app import app
@@ -64,7 +63,6 @@ def change():
 
     if not long_url:
         return ErrResponse()
-
 
     main_url = Constant.query.filter_by(code='main_url').first()
     if not main_url:
